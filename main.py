@@ -32,7 +32,7 @@ for text in listen():
         quit() #выход
     elif text =='гугл':
         webbrowser.open("https://www.google.com/?hl=ru") #открывает ссылку в браузере
-    elif text =='связь': #фраза запуска
-        subprocess.Popen(r"C:\Users\skril\AppData\Local\Discord\Update.exe --processStart Discord.exe") #открывает приложение(вставить полный путь до файла запуска)
+    elif text =='': #фраза запуска
+        subprocess.Popen(r"") #открывает приложение(вставить полный путь до файла запуска)
     else:
         messagebox.showinfo("Помощник", text) #выдаёт текст в окне
