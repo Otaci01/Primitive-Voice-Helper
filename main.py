@@ -7,7 +7,7 @@ from tkinter import messagebox
 
 #переменные
 
-model = Model("Vosk\small-model") #путь к модели от Vosk
+model = Model("Vosk\small-model") #путь к модели от Vosk его нужно будет изменить под себя
 rec = KaldiRecognizer(model, 16000)
 
 p = pyaudio.PyAudio()
@@ -24,7 +24,7 @@ def listen():
         if (rec.AcceptWaveform(data)) and (len(data)>0):
             answer = json.loads(rec.Result())
             if answer['text']:
-                yield answer['text'] #как варик использовать return, но это хрень делает генератор из-за чего for работает всегда до получения нормального значения
+                yield answer['text'] #как варик использовать return, но yield делает генератор из-за чего for text in listen() работает до получения нормального значения которое модель может обработать
 
 for text in listen():
     if text =='пока':
@@ -33,6 +33,6 @@ for text in listen():
     elif text =='гугл':
         webbrowser.open("https://www.google.com/?hl=ru") #открывает ссылку в браузере
     elif text =='': #фраза запуска
-        subprocess.Popen(r"") #открывает приложение(вставить полный путь до файла запуска)
+        subprocess.Popen(r"") #открывает приложение(вставить полный путь до файла запуска), но не открывает окна уже запущенных приложений
     else:
         messagebox.showinfo("Помощник", text) #выдаёт текст в окне
