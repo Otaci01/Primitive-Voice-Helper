@@ -1,0 +1,4 @@
+#нужные библиотеки
+pyaudio
+vosk
+pygetwindow
